@@ -1,0 +1,33 @@
+/*O Código abaixo mostra um sistema de desconto, onde o usuário coloca o valor da sua compra e vê
+se há possibilidade de desconto em sua compra!*/
+
+const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+rl.question("Digite o valor total da sua compra: ", (input) => {
+  let valorCompra = parseFloat(input);
+
+  if (isNaN(valorCompra) || valorCompra <= 0) {
+    console.log("Valor inválido");
+
+  } else if (valorCompra <= 100) {
+    console.log("Sem desconto");
+    console.log("Valor final:", valorCompra.toFixed(2));
+
+  } else if (valorCompra <= 300) {
+    console.log("Desconto de 10%");
+    valorCompra = valorCompra * 0.90;
+    console.log("Valor final:", valorCompra.toFixed(2));
+
+  } else {
+    console.log("Desconto de 20%");
+    valorCompra = valorCompra * 0.80;
+    console.log("Valor final:", valorCompra.toFixed(2));
+  }
+
+  rl.close();
+});
